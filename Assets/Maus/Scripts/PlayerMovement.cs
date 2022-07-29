@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public float rotationSpeed;
 
+    private CharacterController characterController;
     private Animator anm;
 
     void Start()
     {
-
+        characterController = GetComponent<CharacterController>(); 
     }
 
 
@@ -22,9 +23,10 @@ public class CharacterMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
 
         Vector3 moveDir = new Vector3(horizontalInput, 0, verticalInput);
+        float magnitude = Mathf.Clamp01(moveDir.magnitude) * speed; 
         moveDir.Normalize();
 
-        gameObject.GetComponent<Rigidbody>().MovePosition(transform.position + (moveDir * speed)* Time.deltaTime); 
+        characterController.SimpleMove(moveDir * magnitude); 
 
         if(moveDir != Vector3.zero)
         {
