@@ -6,18 +6,25 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public float rotationSpeed;
-    public float jumpSpeed; 
+    public float jumpSpeed;
+    public float jumpButtonPeriod;
+    private float jumpHorizontalSpeed; 
 
     private CharacterController characterController;
     private Animator anm;
     private float ySpeed; //gravity beim springen
     private float originalStepOffset; //fixt ruckeln beim springen
 
-    private bool isRunningJump;
-    private bool isIdleJump; 
+    private float? lastGroundedTime;
+    private float? jumpButtonPressedTime; 
+
+    private bool isJumping;
+    private bool isFalling;
+    private bool isGrounded;
 
     void Start()
     {
+        anm = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
         originalStepOffset = characterController.stepOffset; 
     }
@@ -26,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Laufen
-        anm = GetComponent<Animator>();
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
@@ -37,20 +43,45 @@ public class PlayerMovement : MonoBehaviour
         //Sprung
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
-
         if (characterController.isGrounded)
         {
-            characterController.stepOffset = originalStepOffset; 
-            ySpeed = -0.5f; 
+            lastGroundedTime = Time.time; 
+        }
 
-            if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpButtonPressedTime = Time.time;
+        }
+
+
+        if (Time.time - lastGroundedTime <= jumpButtonPeriod)
+        {
+            characterController.stepOffset = originalStepOffset; 
+            ySpeed = -0.5f;
+            anm.SetBool("IsGrounded", true);
+            isGrounded = true; 
+            anm.SetBool("IsJumping", false);
+            isJumping = false;
+            anm.SetBool("IsFalling", false);
+
+            if (Time.time - jumpButtonPressedTime <= jumpButtonPeriod)
             {
+                anm.SetBool("IsJumping", true);
+                isJumping = true; 
                 ySpeed = jumpSpeed;
+                jumpButtonPressedTime = null;
+                lastGroundedTime = null; 
             }
         }
         else
         {
-            characterController.stepOffset = 0; 
+            characterController.stepOffset = 0;
+            anm.SetBool("IsGrounded", false);
+
+            if((isJumping && ySpeed < 0 || ySpeed < -2))
+            {
+                anm.SetBool("IsFalling", true);
+            }
         }
 
 
@@ -67,6 +98,18 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             anm.SetBool("IsMoving", false); 
+        }
+
+    }
+
+    private void OnAnimatorMove()
+    {
+        if (isGrounded)
+        {
+            Vector3 velocity = anm.deltaPosition;
+            velocity.y = ySpeed * Time.deltaTime;
+
+            characterController.Move(velocity);
         }
     }
 }

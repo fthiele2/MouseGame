@@ -1119,7 +1119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 232667074562642731, guid: e5afe4f421390344fbad666c61e2e8eb, type: 3}
       propertyPath: jumpSpeed
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 232667074562642731, guid: e5afe4f421390344fbad666c61e2e8eb, type: 3}
       propertyPath: m_Enabled
@@ -1128,6 +1128,18 @@ PrefabInstance:
     - target: {fileID: 232667074562642731, guid: e5afe4f421390344fbad666c61e2e8eb, type: 3}
       propertyPath: rotationSpeed
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 232667074562642731, guid: e5afe4f421390344fbad666c61e2e8eb, type: 3}
+      propertyPath: jumpGracePeriod
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 232667074562642731, guid: e5afe4f421390344fbad666c61e2e8eb, type: 3}
+      propertyPath: jumpButtonPeriod
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 232667074562642731, guid: e5afe4f421390344fbad666c61e2e8eb, type: 3}
+      propertyPath: jumpButtonGracePeriod
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 1356149476243970765, guid: e5afe4f421390344fbad666c61e2e8eb, type: 3}
       propertyPath: m_Name
@@ -3669,7 +3681,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731634691}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ce17ff4e99874ef41a9bd43d44c2736b, type: 3}
