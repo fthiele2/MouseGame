@@ -10,7 +10,6 @@ public class Infection : MonoBehaviour
     public Transform enemy3;
     public Transform player;
     public bool infected = true;
-    //public GameObject enemy2;
     public GameObject bubbles2;
 
     void Start()

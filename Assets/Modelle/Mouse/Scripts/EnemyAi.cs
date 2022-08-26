@@ -15,7 +15,7 @@ public class EnemyAi : MonoBehaviour
 
     void Update()
     {
-        
+
         if (gameObject.tag == "Infected")
         {
             enemy.SetDestination(Player.position);
