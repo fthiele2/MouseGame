@@ -7,6 +7,7 @@ public class EnemyAi : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent enemy; 
     public Transform Player;
 
+
     void Start()
     {
 
@@ -14,7 +15,11 @@ public class EnemyAi : MonoBehaviour
 
     void Update()
     {
-        enemy.SetDestination(Player.position); 
+        
+        if (gameObject.tag == "Infected")
+        {
+            enemy.SetDestination(Player.position);
+        }
     }
 
 }
