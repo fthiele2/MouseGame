@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class CountdownTimer : MonoBehaviour
 {
     private float currentTime = 5f;
-    bool currentTimeActive = true; 
+    bool currentTimeActive = true;
+    private bool gameRunning; 
     private Text countdownText;
     public Transform player;
 
@@ -31,14 +32,13 @@ public class CountdownTimer : MonoBehaviour
             currentTime -= Time.deltaTime;
             countdownText.text = currentTime.ToString("f0");
         }
-        
+
         if (currentTime <= 0)
         {
             GameOver();
             Background.SetActive(true);
             currentTimeActive = false;
         }
-
     }
 
     void GameOver()
