@@ -10,8 +10,6 @@ public class CountdownTimer : MonoBehaviour
     private float currentTime = 60f;
     private Text countdownText;
 
-    public Transform player; 
-
 
     // Use this for initialization
     void Start()
@@ -29,17 +27,5 @@ public class CountdownTimer : MonoBehaviour
             SceneManager.LoadScene(SceneToLoad);
         }
 
-    }
-
-    void GameOver()
-    {
-        if (currentTime <= 0 && player.gameObject.tag == "Infected")
-        {
-            Debug.Log("Game Over");
-        }
-        else
-        {
-            Debug.Log("Win");
-        }
     }
 }
