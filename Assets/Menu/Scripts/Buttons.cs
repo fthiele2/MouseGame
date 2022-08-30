@@ -7,18 +7,15 @@ public class Buttons : MonoBehaviour
 {
     public Buttons Settings;
     public GameObject SettingsScreen;
+    public GameObject DescriptionScreen;
+    public GameObject ReturnButton; 
+
     public int RestartScene;
     public int ReturnScene; 
 
    public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
-    }
-
-    public void Description()
-    {
-        Debug.Log("Text");
-        SceneManager.LoadScene("DescMenu");
     }
     
     public void QuitGame()
@@ -27,13 +24,33 @@ public class Buttons : MonoBehaviour
         Application.Quit(); 
     }
 
+    //ReturnButton
+    public void ReturnArrow()
+    {
+        Debug.Log("Return klicked");
+        DescriptionScreen.SetActive(false);
+        SettingsScreen.SetActive(false); 
+    }
+
+
+   //Menu
+
+    public void Description()
+    {
+        Debug.Log("Description clicked");
+        DescriptionScreen.SetActive(true);
+        ReturnButton.SetActive(true); 
+    }
+    
+    
     //IngameSettings
 
     public void SettingsInGame()
     {
         Debug.Log("Settings clicked");
         SettingsScreen.SetActive(true);
-        Time.timeScale = 0; 
+        Time.timeScale = 0;
+        ReturnButton.SetActive(true);
     }
 
     public void SettingsTurnOff()
