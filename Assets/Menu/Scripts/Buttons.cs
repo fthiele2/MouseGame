@@ -38,6 +38,12 @@ public class Buttons : MonoBehaviour
         Debug.Log("Settings clicked");
         SettingsScreen.SetActive(true);
         Time.timeScale = 0; 
+    }
 
+    public void SettingsTurnOff()
+    {
+        Debug.Log("SettingsDisabled");
+        SettingsScreen.SetActive(false);
+        Time.timeScale = 1; 
     }
 }
