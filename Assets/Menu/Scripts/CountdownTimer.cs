@@ -41,22 +41,18 @@ public class CountdownTimer : MonoBehaviour
             countdownText.text = currentTime.ToString("f0");
         }
 
-        if (currentTime <= 0)
+        if (currentTime <= 0 && currentTimeActive == true)
         {
             GameOver();
             Background.SetActive(true);
-            currentTimeActive = false;
-        }
+            
+       
 
-        if (currentTime <= 0)
-        {
-            currentTimeActive = !currentTimeActive;
-
-            if (currentTimeActive)
-            {
+        
                 Time.timeScale = 0;
                 Debug.Log("Game has stopped");
-            }
+                currentTimeActive = false;
+        
         }
     }
 
