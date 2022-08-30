@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
+    public Buttons Settings;
+    public GameObject SettingsScreen;
+
    public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 
@@ -16,16 +19,25 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene("DescMenu");
     }
 
-    public void Settings()
+    /*public void Settings()
     {
         Debug.Log("Settings");
         SceneManager.LoadScene(3); 
     }
+    */
 
     
     public void QuitGame()
     {
         Debug.Log("Quit!"); 
         Application.Quit(); 
+    }
+
+    public void SettingsInGame()
+    {
+        Debug.Log("Settings clicked");
+        SettingsScreen.SetActive(true);
+        Time.timeScale = 0; 
+
     }
 }

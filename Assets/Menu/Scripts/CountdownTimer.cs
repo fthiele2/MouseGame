@@ -2,10 +2,14 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events; 
 
 
 public class CountdownTimer : MonoBehaviour
 {
+    public UnityEvent GameStop;
+    public UnityEvent GameContinue; 
+
     private float currentTime = 5f;
     bool currentTimeActive = true;
     private Text countdownText;
@@ -14,6 +18,7 @@ public class CountdownTimer : MonoBehaviour
     public GameObject GameOverScreen;
     public GameObject GameWinScreen;
     public GameObject Background;
+    public GameObject SettingsScreen;
 
     private bool isRunning;
 
@@ -61,6 +66,7 @@ public class CountdownTimer : MonoBehaviour
         {
             Debug.Log("GameOver");
             GameOverScreen.SetActive(true);
+
         }
 
         else
@@ -80,11 +86,13 @@ public class CountdownTimer : MonoBehaviour
             {
                 Time.timeScale = 0;
                 Debug.Log("Stop");
+                GameStop.Invoke();
             }
             else
             {
                 Time.timeScale = 1;
                 Debug.Log("Continue");
+                GameContinue.Invoke();
             }
         }
     }
