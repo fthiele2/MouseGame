@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PauseController : MonoBehaviour
 {
-    private bool isPaused; 
+    private bool isRunning; 
 
 
     // Start is called before the first frame update
@@ -18,9 +18,9 @@ public class PauseController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            isPaused = !isPaused;
+            isRunning = !isRunning;
 
-            if (isPaused)
+            if (isRunning)
             {
                 Time.timeScale = 0; 
             } 
