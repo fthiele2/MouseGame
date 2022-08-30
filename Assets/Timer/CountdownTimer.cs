@@ -45,7 +45,7 @@ public class CountdownTimer : MonoBehaviour
         else
         {
             Debug.Log("Win");
-            GameOverScreen.SetActive(true);
+            GameWinScreen.SetActive(true);
         }
     }
 }
