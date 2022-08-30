@@ -7,6 +7,8 @@ public class Buttons : MonoBehaviour
 {
     public Buttons Settings;
     public GameObject SettingsScreen;
+    public int RestartScene;
+    public int ReturnScene; 
 
    public void PlayGame()
     {
@@ -18,20 +20,14 @@ public class Buttons : MonoBehaviour
         Debug.Log("Text");
         SceneManager.LoadScene("DescMenu");
     }
-
-    /*public void Settings()
-    {
-        Debug.Log("Settings");
-        SceneManager.LoadScene(3); 
-    }
-    */
-
     
     public void QuitGame()
     {
         Debug.Log("Quit!"); 
         Application.Quit(); 
     }
+
+    //IngameSettings
 
     public void SettingsInGame()
     {
@@ -46,4 +42,15 @@ public class Buttons : MonoBehaviour
         SettingsScreen.SetActive(false);
         Time.timeScale = 1; 
     }
+
+    //EndScreenButtons
+    public void InGameRestart()
+    {
+        SceneManager.LoadScene(RestartScene); 
+    }
+
+    public void InGameReturn()
+    {
+        SceneManager.LoadScene(ReturnScene); 
+    } 
 }
