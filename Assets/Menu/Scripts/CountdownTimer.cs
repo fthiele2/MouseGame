@@ -15,6 +15,8 @@ public class CountdownTimer : MonoBehaviour
     public GameObject GameWinScreen;
     public GameObject Background;
 
+    private bool isRunning;
+
 
     // Use this for initialization
     void Start()
@@ -28,13 +30,14 @@ public class CountdownTimer : MonoBehaviour
     {
         if (currentTimeActive == true)
         {
+            StopGame();
+
             currentTime -= Time.deltaTime;
             countdownText.text = currentTime.ToString("f0");
         }
 
         if (currentTime <= 0)
         {
-            //StopGame();
             GameOver();
             Background.SetActive(true);
             currentTimeActive = false;
@@ -48,11 +51,6 @@ public class CountdownTimer : MonoBehaviour
             {
                 Time.timeScale = 0;
                 Debug.Log("Game has stopped");
-            }
-            else
-            {
-                Time.timeScale = 1;
-                Debug.Log("Game is running");
             }
         }
     }
@@ -69,6 +67,25 @@ public class CountdownTimer : MonoBehaviour
         {
             Debug.Log("Win");
             GameWinScreen.SetActive(true);
+        }
+    }
+
+    void StopGame()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            isRunning = !isRunning;
+
+            if (isRunning)
+            {
+                Time.timeScale = 0;
+                Debug.Log("Stop");
+            }
+            else
+            {
+                Time.timeScale = 1;
+                Debug.Log("Continue");
+            }
         }
     }
 }
