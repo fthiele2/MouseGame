@@ -13,6 +13,7 @@ public class Buttons : MonoBehaviour
     public int RestartScene;
     public int ReturnScene; 
 
+
    public void PlayGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); 

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Infection : MonoBehaviour
 {
     public Transform bubbles;
+    public Transform evilBox;
     public Transform enemy;
     public Transform enemy2;
     public Transform enemy3;
@@ -76,6 +77,20 @@ public class Infection : MonoBehaviour
             Debug.Log("" + other.tag);
         }
 
+        if (infected == true && other.gameObject.transform.parent.name == evilBox.name)
+        {
+            bubbles.GetComponent<ParticleSystem>().Play();
+            bubbles.transform.parent = other.transform;
+            infected = false;
+            Debug.Log("Hat funktioniert" + other.gameObject);
+            Invoke("SetTrue5", 2);
+            bubbles2.transform.localPosition = new Vector3(0, 0, 0);
+            bubbles2.transform.localScale = new Vector3(1, 1, 1);
+            evilBox.gameObject.GetComponent<Infection>().SetTag();
+            this.tag = "NotInfected";
+            Debug.Log("" + other.tag);
+        }
+
     }
 
     void SetTrue()
@@ -96,6 +111,11 @@ public class Infection : MonoBehaviour
     void SetTrue4()
     {
         enemy3.GetComponent<Infection>().infected = true;
+    }
+
+    void SetTrue5()
+    {
+        evilBox.GetComponent<Infection>().infected = true;
     }
 
     void SetTag()

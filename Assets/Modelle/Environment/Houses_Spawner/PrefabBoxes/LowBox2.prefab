@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 8017055218177097470}
   - component: {fileID: -5754084199372789682}
   - component: {fileID: -7511558181221131132}
-  - component: {fileID: -3821330756721609741}
   - component: {fileID: 3549541082147564767}
+  - component: {fileID: 4418378390132767384}
   m_Layer: 0
   m_Name: LowBox2
-  m_TagString: Untagged
+  m_TagString: Infected
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,19 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &-3821330756721609741
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4346952761432201386}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.023069981, y: 0.023172935, z: 0.021242151}
-  m_Center: {x: 0.000029961431, y: 0.000010363146, z: 0.010703612}
 --- !u!54 &3549541082147564767
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -115,3 +102,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!136 &4418378390132767384
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4346952761432201386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.011534994
+  m_Height: 0.023172941
+  m_Direction: 1
+  m_Center: {x: 0.000029841909, y: 0.000010315571, z: 0.010703654}

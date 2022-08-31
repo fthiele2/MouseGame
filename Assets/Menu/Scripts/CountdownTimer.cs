@@ -10,7 +10,7 @@ public class CountdownTimer : MonoBehaviour
     public UnityEvent GameStop;
     public UnityEvent GameContinue; 
 
-    private float currentTime = 5f;
+    private float currentTime = 60f;
     bool currentTimeActive = true;
     private Text countdownText;
     public Transform player;
@@ -28,6 +28,8 @@ public class CountdownTimer : MonoBehaviour
     {
         countdownText = GetComponent<Text>();
         currentTimeActive = currentTime >= 0;
+        Time.timeScale = 1;
+
     }
 
     // Update is called once per frame
